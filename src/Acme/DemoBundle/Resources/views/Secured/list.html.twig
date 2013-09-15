@@ -1,0 +1,57 @@
+{% extends "AcmeDemoBundle:Secured:layout.html.twig" %}
+
+{% block title "List" %}
+
+
+
+{% block content %}
+	<a href="{{ path('_demo_secured_insert_image') }}">
+		Insert image
+	</a>
+	<ul>
+		<li> 
+			<a href="{{ path('_demo_secured_list', {'idcategory': 0}) }}">
+				All
+			</a>
+		</li>
+		{% for key, value in list_categories %}
+		<li>
+			<a href="{{ path('_demo_secured_list_filter', {'idcategory': value.idcategory}) }}">
+				{{value.category_name}}
+			</a>
+			
+		</li>
+		{% endfor %}
+	</ul>
+	
+	<div style="display: block; position : absolute;
+	  float:left; background-color:#f0f0f0;" id="details">
+	
+	 </div>
+	<table border="0">
+	 <tr>
+	{% for key, value in list_images %}
+		{#Key : {{ key }}#}
+		
+				<td>
+					<a href="{{ path('_demo_item', {'id': value.idimage}) }}">
+						<div style="margin:3px;width: 300px;height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;background:url({{ asset('bundles/acmedemo/images/'~ value.image_file) }}) 50% 50%; background-size: 500px;">
+							<img src="{{ asset('bundles/acmedemo/images/'~ value.image_file) }}" style="width:300px;height:300px;opacity: 0;filter: alpha(opacity=0); " onmouseover="javascript:showDetails(event, '{{value.image_description}}');" onmouseout="javascript:hideDetails();"/>
+						</div>
+						<br/>
+						{{value.image_name}}
+						{{value.category_name}}
+					</a>
+				</td>
+				{% if loop.index is divisibleby(3) %}
+				</tr>
+				<tr>
+				{% endif %}
+	{% endfor %}
+	</tr>
+	</table>
+	
+{% endblock %}
+
+
+{% set code = code(_self) %}

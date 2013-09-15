@@ -1,0 +1,14 @@
+{% extends "AcmeDemoBundle:Secured:layout.html.twig" %}
+
+{% block title "Insert image" %}
+
+{% block content %}
+    <form action="{{ path('_demo_secured_insert_image') }}" method="POST" id="insert_image_form">
+        {{ form_errors(form) }}
+
+
+        {{ form_rest(form) }}
+        <input type="submit" value="Insert" class="symfony-button-grey" />
+    </form>
+{% endblock %}
+
