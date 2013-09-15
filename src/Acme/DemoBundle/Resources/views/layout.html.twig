@@ -20,22 +20,31 @@
     {% block content_header %}
         <ul id="menu">
             {% block content_header_more %}
-                <li><a href="{{ path('_demo') }}">Demo Home</a></li>
+				{% if app.user %}
+                <li><a href="{{ path('_demo_secured_list') }}">Home</a></li>
+				{% else %}
+                <li><a href="{{ path('_demo') }}">Home</a></li>
+				{% endif %}
+				{% if app.user %}
+				{% else %}
+				<li><a href="{{ path('_demo_login') }}">Login</a></li>
+				{% endif %}
             {% endblock %}
         </ul>
 
         <div style="clear: both"></div>
     {% endblock %}
 
-    <div class="block">
+    <div class="1block">
         {% block content %}{% endblock %}
     </div>
 
+	{#
     {% if code is defined %}
         <h2>Code behind this page</h2>
         <div class="block">
             <div class="symfony-content">{{ code|raw }}</div>
         </div>
     {% endif %}
-	
+	#}
 {% endblock %}

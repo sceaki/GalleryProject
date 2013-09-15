@@ -3,7 +3,7 @@
 {% block title "Item" %}
 
 {% block content %}
-    <h1>Item</h1>
+    <h1>{{value.image_name}}</h1>
 	
 	{% for key, value in elem %}
 		{#Key : {{ key }}#}
@@ -12,8 +12,7 @@
 				<td>
 					<a href="{{ path('_demo_item', {'id': value.idimage}) }}">
 						<img src="{{ asset('bundles/acmedemo/images/'~ value.image_file) }}" style="max-width:80%; "/>
-						<br/>
-						{{value.image_name}}
+						
 						<br/>
 						{{value.image_description}}
 					</a>

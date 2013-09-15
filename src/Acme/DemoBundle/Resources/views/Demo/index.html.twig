@@ -1,21 +1,21 @@
 {% extends "AcmeDemoBundle::layout.html.twig" %}
 
-{% block title "Symfony - Demos" %}
-
-{% block content_header '' %}
+{% block title "GalleryProject - Home" %}
 
 {% block content %}
-    <!--<h1 class="title">Available demos 11</h1>-->
+	<div align="center">
 	<a href="{{ path('_demo_list', {'idcategory': 0}) }}">
 		<div style="margin:3px;width: 600px;height: 600px;border-radius: 300px;-webkit-border-radius: 300px;-moz-border-radius: 300px;background:url({{ asset('bundles/acmedemo/images/DSC_5949.JPG') }}) 50% 50%; background-size: 800px;">
 			<img src="{{ asset('bundles/acmedemo/images/DSC_5949.JPG') }}" style="max-width:80%;width:600px;height:600px;opacity: 0;filter: alpha(opacity=0);"/>
 		</div>
 	</a>
+	</div>
     <ul id="demo-list">
-        <li><a href="{{ path('_demo_hello', {'name': 'Simona'}) }}">Hello11 World</a></li>
-        <li><a href="{{ path('_demo_list', {'idcategory': 0}) }}">List</a></li>
-        <li><a href="{{ path('_demo_secured_insert_image') }}">Insert image</a></li>
-        <li><a href="{{ path('_demo_secured_hello', {'name': 'World'}) }}">Access the secured area</a> <a href="{{ path('_demo_login') }}">Go to the login page</a></li>
+        {# <li><a href="{{ path('_demo_hello', {'name': 'Simona'}) }}">Hello11 World</a></li>#}
+        {# <li><a href="{{ path('_demo_list', {'idcategory': 0}) }}">List</a></li> #}
+        {# <li><a href="{{ path('_demo_secured_insert_image') }}">Insert image</a></li>#}
+        {# <li><a href="{{ path('_demo_secured_hello', {'name': 'World'}) }}">Access the secured area</a> #}
+		{# <a href="{{ path('_demo_login') }}">Go to the login page</a></li> #}
         {# <li><a href="{{ path('_demo_contact') }}">Send a Message</a></li> #}
     </ul>
 {% endblock %}

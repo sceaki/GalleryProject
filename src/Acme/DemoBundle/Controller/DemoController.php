@@ -66,7 +66,8 @@ class DemoController extends Controller
 		$conn = $this->get('database_connection');
 		
 		$string_query = 'SELECT * FROM image i 
-		                inner join category c on c.idcategory = i.idcategory';
+		                inner join category c on c.idcategory = i.idcategory
+						inner join user u on i.iduser = u.iduser';
 		if ($idcategory != 0)
 		{
 			$string_query = $string_query.' where i.idcategory = '.$idcategory;
