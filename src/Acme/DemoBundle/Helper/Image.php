@@ -3,23 +3,37 @@ namespace Acme\DemoBundle\Helper;
 
 class Image  
 {  
-	private $image_id;
+	private $idimage;
     private $image_name;  
     private $image_description;  
     private $image_file;  
     private $image_width;
 	private $image_height;
 	private $date_created;
+	private $category_name;
+	private $username;
   
-    public function __construct($image_id, $image_name, $image_description, $image_file)  
+    public function __construct($idimage, $image_name, $image_description, $image_file, $category_name, $username)  
     {  
-        $this->image_id = $image_id;  
+        $this->idimage = $idimage;  
         $this->image_name = $image_name;  
         $this->image_description = $image_description;  
-        $this->image_file = $image_file;  
+        $this->image_file = $image_file;   
 		$this->date_created = date("Y-m-d H:i:s");
+        $this->category_name = $category_name;  
+        $this->username = $username;  
     }  
   
+    public function setIdImage($idimage)  
+    {  
+        $this->idimage = $idimage;  
+    }  
+  
+    public function getIdImage()  
+    {  
+        return $this->idimage;  
+    }  
+	
 	public function setImageName($image_name)  
     {  
         $this->image_name = $image_name;  
@@ -48,6 +62,26 @@ class Image
     public function getImageFile()  
     {  
         return $this->image_file;  
+    }  
+	
+	public function setCategoryName($category_name)  
+    {  
+        $this->category_name = $category_name;  
+    }  
+  
+    public function getCategoryName()  
+    {  
+        return $this->category_name;  
+    }  
+	
+	public function setUsername($username)  
+    {  
+        $this->username = $username;  
+    }  
+  
+    public function getUsername()  
+    {  
+        return $this->username;  
     }  
 	
 	public function changeImage()

@@ -43,7 +43,7 @@ class __TwigTemplate_89e7704205c95e248c6ae5da901d412a extends Twig_Template
         foreach ($context['_seq'] as $context["key"] => $context["value"]) {
             // line 7
             echo "    <h1>";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "image_name"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "getImageName", array(), "method"), "html", null, true);
             echo "</h1>
 \t
 \t\t";
@@ -53,17 +53,17 @@ class __TwigTemplate_89e7704205c95e248c6ae5da901d412a extends Twig_Template
 \t\t\t\t<td>
 \t\t\t\t\t<a href=\"";
             // line 13
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_demo_item", array("id" => $this->getAttribute($this->getContext($context, "value"), "idimage"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_demo_item", array("id" => $this->getAttribute($this->getContext($context, "value"), "getIdImage", array(), "method"))), "html", null, true);
             echo "\">
 \t\t\t\t\t\t<img src=\"";
             // line 14
-            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("bundles/acmedemo/images/" . $this->getAttribute($this->getContext($context, "value"), "image_file"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("bundles/acmedemo/images/" . $this->getAttribute($this->getContext($context, "value"), "getImageFile", array(), "method"))), "html", null, true);
             echo "\" style=\"max-width:80%; \"/>
 \t\t\t\t\t\t
 \t\t\t\t\t\t<br/>
 \t\t\t\t\t\t";
             // line 17
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "image_description"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "getImageDescription", array(), "method"), "html", null, true);
             echo "
 \t\t\t\t\t</a>
 \t\t\t\t</td>

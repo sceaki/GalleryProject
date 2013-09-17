@@ -22,7 +22,7 @@ class __TwigTemplate_29ecd58a3c718e13e00111d8e1461b67 extends Twig_Template
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 65
+        // line 67
         $context["code"] = $this->env->getExtension('demo')->getCode($this);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
@@ -87,10 +87,11 @@ class __TwigTemplate_29ecd58a3c718e13e00111d8e1461b67 extends Twig_Template
 \t\t</td>
 \t\t<td>
 \t
+\t\t\t
 \t\t\t<table border=\"0\" >
 \t\t\t <tr>
 \t\t\t";
-        // line 35
+        // line 36
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "list_images"));
         $context['loop'] = array(
@@ -107,43 +108,41 @@ class __TwigTemplate_29ecd58a3c718e13e00111d8e1461b67 extends Twig_Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["key"] => $context["value"]) {
-            // line 36
-            echo "\t\t\t\t";
             // line 37
             echo "\t\t\t\t
 \t\t\t\t\t\t<td align=\"center\">
 \t\t\t\t\t\t\t<a href=\"";
             // line 39
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_demo_item", array("id" => $this->getAttribute($this->getContext($context, "value"), "idimage"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_demo_item", array("id" => $this->getAttribute($this->getContext($context, "value"), "getIdImage", array(), "method"))), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t<div style=\"margin:3px;width: 300px;height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;background:url(";
             // line 41
-            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("bundles/acmedemo/images/" . $this->getAttribute($this->getContext($context, "value"), "image_file"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("bundles/acmedemo/images/" . $this->getAttribute($this->getContext($context, "value"), "getImageFile", array(), "method"))), "html", null, true);
             echo ") 50% 50%; background-size: 500px;\" >
 \t\t\t\t\t\t\t\t\t<img onmouseover=\"javascript:showMessageJson(";
             // line 42
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "idimage"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "getIdImage", array(), "method"), "html", null, true);
             echo ",'";
             echo $this->env->getExtension('routing')->getPath("_demo_showMessage");
             echo "');\" onmouseout=\"javascript:hideInfo();\" src=\"";
-            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("bundles/acmedemo/images/" . $this->getAttribute($this->getContext($context, "value"), "image_file"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("bundles/acmedemo/images/" . $this->getAttribute($this->getContext($context, "value"), "getImageFile", array(), "method"))), "html", null, true);
             echo "\" style=\"width:300px;height:300px;opacity: 0;filter: alpha(opacity=0); \" />
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<br/>
 \t\t\t\t\t\t\t\t";
             // line 45
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "image_name"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "getImageName", array(), "method"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t<br/>
 \t\t\t\t\t\t\t\t";
             // line 47
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "category_name"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "getCategoryName", array(), "method"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t<br/>
 \t\t\t\t\t\t\t\t";
             // line 49
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "username"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "value"), "getUsername", array(), "method"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</td>
@@ -172,6 +171,8 @@ class __TwigTemplate_29ecd58a3c718e13e00111d8e1461b67 extends Twig_Template
         // line 57
         echo "\t\t\t</tr>
 \t\t\t</table>
+\t\t\t
+\t\t\t
 \t\t</td>
 \t</tr>
 </table>
@@ -190,6 +191,6 @@ class __TwigTemplate_29ecd58a3c718e13e00111d8e1461b67 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  173 => 57,  159 => 56,  154 => 53,  152 => 52,  146 => 49,  141 => 47,  136 => 45,  126 => 42,  122 => 41,  117 => 39,  113 => 37,  111 => 36,  94 => 35,  86 => 29,  73 => 22,  67 => 21,  63 => 20,  60 => 19,  56 => 18,  49 => 14,  40 => 7,  37 => 6,  31 => 3,  26 => 65,);
+        return array (  172 => 57,  158 => 56,  153 => 53,  151 => 52,  145 => 49,  140 => 47,  135 => 45,  125 => 42,  121 => 41,  116 => 39,  112 => 37,  95 => 36,  86 => 29,  73 => 22,  67 => 21,  63 => 20,  60 => 19,  56 => 18,  49 => 14,  40 => 7,  37 => 6,  31 => 3,  26 => 67,);
     }
 }

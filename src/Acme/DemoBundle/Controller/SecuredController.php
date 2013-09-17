@@ -4,7 +4,9 @@ namespace Acme\DemoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -84,9 +86,9 @@ class SecuredController extends Controller
             if ($form->isValid()) 
 			{
                 //$mailer = $this->get('mailer');
-                //$this->get('session')->getFlashBag()->set('notice', 'Message sent!');
+                $this->get('session')->getFlashBag()->set('notice', 'Image inserted!');
 				
-				//insert into table image
+				
 				$data = $form->getData();
 				
 				$image_name = $data['image_name'];
@@ -94,8 +96,26 @@ class SecuredController extends Controller
 				$idcategory = $data['category'];
 				$image_file = $data['image_file'];
 				
+				//get id user
+				$user = $this->getUser();
+				$username = $user->getUsername();
+				
 				$conn = $this->get('database_connection');
-				$elems = $conn->query('insert into image(image_name, image_description, image_file, idcategory) values("'.$image_name.'", "'.$image_description.'", "'.$image_file.'", '.$idcategory.')');
+				
+				$string_query = 'SELECT iduser FROM user where username = "'.$username.'"';
+				$list_user = $conn->fetchAll($string_query);
+				foreach ($list_user as $row)
+				{
+					$iduser = $row['iduser'];
+				}
+				
+				//upload file
+				
+				//create small image
+				//imagecopyresized 
+				
+				//insert into table image
+				$elems = $conn->query('insert into image(image_name, image_description, image_file, idcategory, iduser) values("'.$image_name.'", "'.$image_description.'", "'.$image_file.'", '.$idcategory.', '.$iduser.')');
 				
                 //return new RedirectResponse($this->generateUrl('_demo_secured_insert_image'));
             }
@@ -113,11 +133,8 @@ class SecuredController extends Controller
     public function listAction($idcategory)
     {
 	
-		//$array_list[1] = "A1";
-		//$array_list[2] = "A2";
 		$user = $this->getUser();
 		$username = $user->getUsername();
-		
 		
 		$conn = $this->get('database_connection');
 		

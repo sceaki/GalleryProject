@@ -4,17 +4,17 @@
 
 {% block content %}
 	{% for key, value in elem %}
-    <h1>{{value.image_name}}</h1>
+    <h1>{{value.getImageName()}}</h1>
 	
 		{#Key : {{ key }}#}
 		<table>
 			 <tr>
 				<td>
-					<a href="{{ path('_demo_item', {'id': value.idimage}) }}">
-						<img src="{{ asset('bundles/acmedemo/images/'~ value.image_file) }}" style="max-width:80%; "/>
+					<a href="{{ path('_demo_item', {'id': value.getIdImage()}) }}">
+						<img src="{{ asset('bundles/acmedemo/images/'~ value.getImageFile()) }}" style="max-width:80%; "/>
 						
 						<br/>
-						{{value.image_description}}
+						{{value.getImageDescription()}}
 					</a>
 				</td>
 			 </tr>
