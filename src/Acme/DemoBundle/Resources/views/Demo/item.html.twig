@@ -3,9 +3,9 @@
 {% block title "Item" %}
 
 {% block content %}
+	{% for key, value in elem %}
     <h1>{{value.image_name}}</h1>
 	
-	{% for key, value in elem %}
 		{#Key : {{ key }}#}
 		<table>
 			 <tr>

@@ -11,8 +11,13 @@ use Acme\DemoBundle\Form\ContactType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Acme\DemoBundle\Helper\Person;
+use Acme\DemoBundle\Helper\Image;
+use Acme\DemoBundle\Helper\ImageSmall;
+use Acme\DemoBundle\Helper\ImageLarge;
+use Acme\DemoBundle\Helper\ImageFactory;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DemoController extends Controller
 {
@@ -31,7 +36,6 @@ class DemoController extends Controller
      */
     public function helloAction($name)
     {
-	
         return array('name' => $name);
     }
 
@@ -42,16 +46,57 @@ class DemoController extends Controller
      */
     public function itemAction($id)
     {
-	
 		$conn = $this->get('database_connection');
         $elem = $conn->fetchAll('SELECT * FROM image where idimage ='.$id);
-		
-		//print_r($elem);
 		
 		return array('elem' => $elem);
     }
 	
 
+	 /**
+     * @Route("/list", name="_demo_showMessage")
+     
+     */
+	public function showMessageAction(Request $request)
+    {
+		if ( $request->isMethod( 'POST' ) ) 
+		{
+			$params = array();
+			$content = $this->get("request")->getContent();
+			
+			if (!empty($content))
+			{
+				$params = json_decode($content);
+			}
+			
+			$idimage = $params->idimage;
+			
+			$conn = $this->get('database_connection');
+			$string_query = 'select i.image_name, i.image_description, i.image_file,
+			                 c.category_name
+							 from image i 
+                             inner join category c on c.idcategory = i.idcategory			
+			                 where i.idimage = '.$params->idimage;
+			$image_data = $conn->fetchAll($string_query);
+			
+			foreach ($image_data as $row)
+			{
+				$image_name = $row['image_name'];
+				$image_description = $row['image_description'];
+				$image_file = $row['image_file'];
+				$category_name = $row['category_name'];
+			}
+			
+			$message = 'Image '.$image_name.' is included in '.$category_name.' category and is described as '.$image_description;
+			
+			$response['success'] = true;
+			$response['message'] = $message;
+			
+			return new JsonResponse($response);
+		}
+		return array();
+		
+	}
 	
 	  /**
      * @Route("/list/{idcategory}", name="_demo_list")
@@ -60,9 +105,6 @@ class DemoController extends Controller
     public function listAction($idcategory)
     {
 	
-		//$array_list[1] = "A1";
-		//$array_list[2] = "A2";
-		
 		$conn = $this->get('database_connection');
 		
 		$string_query = 'SELECT * FROM image i 
@@ -75,18 +117,29 @@ class DemoController extends Controller
 		
         $list_images = $conn->fetchAll($string_query);
 		
-		
         $list_categories = $conn->fetchAll('SELECT * FROM category');
 		
 		//print_r($list_images);
+		foreach ($list_images as $list_row)
+		{
+			//print($list_row['image_name']);
+			$image_id = $list_row['idimage'];
+			$image_name = $list_row['image_name'];
+			$image_description = $list_row['image_description'];
+			$image_file = $list_row['image_file'];
+		}
 		
-		$person1 = new Person(1, "Tom", "Button-Pusher", 34);  
-		$person2 = new Person(2, "John", "Lever Puller", 41);
+		//$person1 = new Person(1, "Tom", "Button-Pusher", 34);  
+		//$person2 = new Person(2, "John", "Lever Puller", 41);
 		
 		//print_r($person1);
 		
-		$array_list[1] = $person1;
-		$array_list[2] = $person2;
+		$image1 = ImageFactory::create('small', 1, 'imgname', 'imgdescr', 'imgfile');
+		//print_r($image1);
+		//print($image1->getImageName());
+		
+		//$array_list[1] = $person1;
+		//$array_list[2] = $person2;
 		
 		//print_r($array_list);
 		

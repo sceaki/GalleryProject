@@ -222,9 +222,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_item')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::itemAction',));
             }
 
-            // _demo_list
-            if (0 === strpos($pathinfo, '/demo/list') && preg_match('#^/demo/list/(?P<idcategory>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_list')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::listAction',));
+            if (0 === strpos($pathinfo, '/demo/list')) {
+                // _demo_showMessage
+                if ($pathinfo === '/demo/list') {
+                    return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::showMessageAction',  '_route' => '_demo_showMessage',);
+                }
+
+                // _demo_list
+                if (preg_match('#^/demo/list/(?P<idcategory>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => '_demo_list')), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::listAction',));
+                }
+
             }
 
             // _demo_contact

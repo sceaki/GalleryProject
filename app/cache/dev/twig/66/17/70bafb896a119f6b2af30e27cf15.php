@@ -44,30 +44,34 @@ class __TwigTemplate_661770bafb896a119f6b2af30e27cf15 extends Twig_Template
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/acmedemo/js/demo.js"), "html", null, true);
         echo "\" type=\"text/javascript\" ></script>
+    <script src=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/acmedemo/js/jquery-1.7.2.min.js"), "html", null, true);
+        echo "\" type=\"text/javascript\" ></script>
 \t
 ";
     }
 
-    // line 10
+    // line 11
     public function block_title($context, array $blocks = array())
     {
         echo "Demo Bundle";
     }
 
-    // line 12
+    // line 13
     public function block_body($context, array $blocks = array())
     {
-        // line 13
+        // line 14
         echo "
     ";
-        // line 14
+        // line 15
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flashbag"), "get", array(0 => "notice"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 15
+            // line 16
             echo "        <div class=\"flash-message\">
             <em>Notice</em>: ";
-            // line 16
+            // line 17
             echo twig_escape_filter($this->env, $this->getContext($context, "flashMessage"), "html", null, true);
             echo "
         </div>
@@ -76,73 +80,73 @@ class __TwigTemplate_661770bafb896a119f6b2af30e27cf15 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 19
+        // line 20
         echo "
     ";
-        // line 20
+        // line 21
         $this->displayBlock('content_header', $context, $blocks);
-        // line 37
+        // line 38
         echo "
     <div class=\"1block\">
         ";
-        // line 39
-        $this->displayBlock('content', $context, $blocks);
         // line 40
+        $this->displayBlock('content', $context, $blocks);
+        // line 41
         echo "    </div>
 
 \t";
     }
 
-    // line 20
+    // line 21
     public function block_content_header($context, array $blocks = array())
     {
-        // line 21
+        // line 22
         echo "        <ul id=\"menu\">
             ";
-        // line 22
+        // line 23
         $this->displayBlock('content_header_more', $context, $blocks);
-        // line 33
+        // line 34
         echo "        </ul>
 
         <div style=\"clear: both\"></div>
     ";
     }
 
-    // line 22
+    // line 23
     public function block_content_header_more($context, array $blocks = array())
     {
-        // line 23
+        // line 24
         echo "\t\t\t\t";
         if ($this->getAttribute($this->getContext($context, "app"), "user")) {
-            // line 24
+            // line 25
             echo "                <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("_demo_secured_list");
             echo "\">Home</a></li>
 \t\t\t\t";
         } else {
-            // line 26
+            // line 27
             echo "                <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("_demo");
             echo "\">Home</a></li>
 \t\t\t\t";
         }
-        // line 28
+        // line 29
         echo "\t\t\t\t";
         if ($this->getAttribute($this->getContext($context, "app"), "user")) {
-            // line 29
+            // line 30
             echo "\t\t\t\t";
         } else {
-            // line 30
+            // line 31
             echo "\t\t\t\t<li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("_demo_login");
             echo "\">Login</a></li>
 \t\t\t\t";
         }
-        // line 32
+        // line 33
         echo "            ";
     }
 
-    // line 39
+    // line 40
     public function block_content($context, array $blocks = array())
     {
     }
@@ -159,6 +163,6 @@ class __TwigTemplate_661770bafb896a119f6b2af30e27cf15 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  146 => 39,  142 => 32,  136 => 30,  133 => 29,  130 => 28,  124 => 26,  118 => 24,  115 => 23,  112 => 22,  105 => 33,  103 => 22,  100 => 21,  97 => 20,  91 => 40,  89 => 39,  85 => 37,  83 => 20,  80 => 19,  71 => 16,  68 => 15,  64 => 14,  61 => 13,  58 => 12,  52 => 10,  45 => 6,  41 => 5,  36 => 4,  33 => 3,);
+        return array (  150 => 40,  146 => 33,  140 => 31,  137 => 30,  134 => 29,  128 => 27,  122 => 25,  119 => 24,  116 => 23,  109 => 34,  107 => 23,  104 => 22,  101 => 21,  95 => 41,  93 => 40,  89 => 38,  87 => 21,  84 => 20,  75 => 17,  72 => 16,  68 => 15,  65 => 14,  62 => 13,  56 => 11,  49 => 7,  45 => 6,  41 => 5,  36 => 4,  33 => 3,);
     }
 }
